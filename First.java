@@ -14,7 +14,7 @@ public class First {
 		  driver.findElement(By.xpath("//input[@id='txtUsername']")).sendKeys(username);
 		  driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys(password);
 		  driver.findElement(By.xpath("//button[text()='Login']")).click(); 
-	  Thread.sleep(3000);
+	  //Thread.sleep(3000);
 	  
 	  /*public void admin_click(){
 		  
