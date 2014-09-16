@@ -11,8 +11,8 @@ public class First {
 		driver=new FirefoxDriver();
 		  driver.get("http://192.168.1.124:85/");
 		  driver.manage().window().maximize();
-		  driver.findElement(By.xpath("//input[@id='txtUsername']")).sendKeys(username);
-		  driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys(password);
+		  driver.findElement(By.xpath("//input[@id='txtUsername']")).sendKeys("afzalpurapmc");
+		  driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("vsspl");
 		  driver.findElement(By.xpath("//button[text()='Login']")).click(); 
 	  //Thread.sleep(3000);
 	  
