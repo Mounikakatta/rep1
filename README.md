@@ -2,4 +2,4 @@ Repo Info
 
 ----------------
 
-This file contains information about repo.
+This file contains information abour repository.
