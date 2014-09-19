@@ -29,7 +29,8 @@ public class Action {
 	    Thread.sleep(2000);
 	    driver.switchTo().frame("4049_IFrame");
 	  }
-	
+	  
+	@SuppressWarnings("deprecation")
 	@Test(invocationCount=3)
   public void f()throws Exception {
 	    driver.findElement(By.xpath("//td/em/button[contains(text(), 'New Record')]")).click();
