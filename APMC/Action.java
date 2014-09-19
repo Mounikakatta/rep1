@@ -82,6 +82,8 @@ public class Action {
 	    Thread.sleep(1000);		
   }
   
+  @SuppressWarnings("deprecation")
+	@Test(enabled= false)
   public void E()throws Exception {
 			driver.findElement(By.xpath("//a/span[contains(text(),'Action Plan')]")).click();
 		    Thread.sleep(2000);
