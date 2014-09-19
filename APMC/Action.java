@@ -23,15 +23,15 @@ public class Action {
 	    driver.findElement(By.xpath("//div/input[@id='txtUsername']")).sendKeys("afzalpurapmc");
 	    driver.findElement(By.xpath("//div/input[@id='txtPassword']")).sendKeys("vsspl");
 	    driver.findElement(By.xpath("//td/em/button[@id='ext-gen16']")).click();
-        Thread.sleep(3000); 
-        driver.findElement(By.xpath("//div/div/div/span[contains(text(),'Administration')]")).click();
-	  }
-	
-	@Test(description= "Action Plan Creation")
-  public void f()throws Exception {
-		driver.findElement(By.xpath("//a/span[contains(text(),'Action Plan')]")).click();
+            Thread.sleep(3000); 
+            driver.findElement(By.xpath("//div/div/div/span[contains(text(),'Administration')]")).click();
+            driver.findElement(By.xpath("//a/span[contains(text(),'Action Plan')]")).click();
 	    Thread.sleep(2000);
 	    driver.switchTo().frame("4049_IFrame");
+	  }
+	
+	@Test(invocationCount=3)
+  public void f()throws Exception {
 	    driver.findElement(By.xpath("//td/em/button[contains(text(), 'New Record')]")).click();
 	    Thread.sleep(1000);
 	    driver.findElement(By.xpath("//img[@id='ext-gen203']")).click();
@@ -63,10 +63,41 @@ public class Action {
 	    Thread.sleep(1000);
 	    driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();   
 	    Thread.sleep(1000);
+	    try{
+	    	WebDriverWait Wait = new WebDriverWait(driver,20);
+	    	Wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ext-mb-text']")));
+	    	
+	      	WebElement r = driver.findElement(By.xpath("//span[contains(text(),'Action plan details has been saved successfully')]"));
+		    String str= r.getText();
+		    System.out.println(str);
+		    Assert.assertEquals("Action plan details has been saved successfully",str);
+	    }
+	    catch (Exception e){
+	    	System.out.println("Failed" +e.getMessage());
+	    }	    	
 	    driver.findElement(By.xpath("//td/em/button[contains(text(),'OK')]")).click();
 	    Thread.sleep(1000);
 	    driver.findElement(By.xpath("//button[contains(text(),'Close')]")).click();
 	    Thread.sleep(1000);		
+  }
+  
+  public void E()throws Exception {
+			driver.findElement(By.xpath("//a/span[contains(text(),'Action Plan')]")).click();
+		    Thread.sleep(2000);
+		    driver.switchTo().frame("4049_IFrame");
+		    driver.findElement(By.xpath("//div[contains(text(),'Street lights')]")).click();
+		    Thread.sleep(1000);
+		    driver.findElement(By.xpath("//button[contains(text(),'Edit Record')]")).click();
+		    driver.findElement(By.xpath("//input[@id='developmentPlanningWindow_txtWorkValue']")).clear();
+		    driver.findElement(By.xpath("//input[@id='developmentPlanningWindow_txtWorkValue']")).sendKeys("435126");
+		    driver.findElement(By.xpath("//textarea[@id='developmentPlanningWindow_txtWorkDetails']")).clear();
+		    driver.findElement(By.xpath("//textarea[@id='developmentPlanningWindow_txtWorkDetails']")).sendKeys("Action plan work details");
+		    driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
+		    WebElement e = driver.findElement(By.xpath("//span[@id='Action plan details has been saved successfully']"));
+		    String str= e.getText();
+		    System.out.println(str);
+		    Assert.assertEquals("Action plan details has been saved successfully", str);
+		    driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
   }
   @AfterTest
   public void Logout() throws Exception{
